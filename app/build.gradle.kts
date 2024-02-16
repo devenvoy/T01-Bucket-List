@@ -55,12 +55,6 @@ dependencies {
     implementation("com.intuit.sdp:sdp-android:1.1.0")
     implementation("com.intuit.ssp:ssp-android:1.1.0")
 
-
-
-
-
-
-
     // database
     implementation("com.google.firebase:firebase-database")
     implementation("com.firebaseui:firebase-ui-database:8.0.2")
