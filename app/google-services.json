@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "713476732386",
+    "project_id": "t01-backetlist",
+    "storage_bucket": "t01-backetlist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713476732386:android:ba21bd5c87f43cdafdb5bb",
+        "android_client_info": {
+          "package_name": "com.example.t01_bucketlist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5eW8KKvxx6KSflO4Szr3MblWiHWrIUgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
