@@ -17,7 +17,6 @@
         tools:layout_editor_absoluteY="0dp"/>
 
 
-
     <EditText
         android:id="@+id/ed_bucketdescription"
         android:layout_width="match_parent"
