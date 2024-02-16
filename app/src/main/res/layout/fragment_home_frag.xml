@@ -6,6 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".home_frag">
 
+    <LinearLayout
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_70sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        android:orientation="horizontal">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:cardCornerRadius="@dimen/_20sdp">
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:src="@drawable/logo"
+                    android:contentDescription="logo"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/txt"
+                    app:layout_constraintTop_toTopOf="parent"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -14,7 +46,7 @@
         tools:listitem="@layout/bucket_card_item"
         android:paddingTop="@dimen/_30sdp"
         android:paddingBottom="@dimen/_20sdp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
@@ -26,7 +58,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="12dp"
         android:src="@drawable/ic_add"
-        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
