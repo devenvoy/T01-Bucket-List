@@ -9,21 +9,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.t01_bucketlist.R;
-import com.example.t01_bucketlist.model.ExpenseItem;
+import com.example.t01_bucketlist.model.BucketItem;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class ExpenseAdapter extends FirebaseRecyclerAdapter<ExpenseItem, ExpenseAdapter.ExpenseViewHolder> {
+public class ExpenseAdapter extends FirebaseRecyclerAdapter<BucketItem, ExpenseAdapter.ExpenseViewHolder> {
 
-    public ExpenseAdapter(@NonNull FirebaseRecyclerOptions<ExpenseItem> options) {
+    public ExpenseAdapter(@NonNull FirebaseRecyclerOptions<BucketItem> options) {
         super(options);
     }
 
     @Override
     protected void
     onBindViewHolder(@NonNull ExpenseViewHolder holder,
-                     int position, @NonNull ExpenseItem model) {
+                     int position, @NonNull BucketItem model) {
+
+        holder.tName.setText(model.getName());
+        holder.tDate.setText(model.getDate());
+        holder.tcat.setText(model.getCategory());
 
     }
 
