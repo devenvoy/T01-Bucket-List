@@ -16,7 +16,8 @@
         android:layout_alignParentBottom="true"
         android:src="@drawable/logo1"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-54dp" />
+        tools:layout_editor_absoluteY="-54dp"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="350dp"

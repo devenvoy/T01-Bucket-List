@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.t01_bucketlist.model.BucketItem;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +29,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -36,6 +39,7 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Add_Bucket extends BaseActivity {
+    private static final int IMAGE_REQUEST = 1;
     private TextView selectedDateTV;
 
     ImageView imageView;
@@ -66,6 +70,13 @@ public class Add_Bucket extends BaseActivity {
         storageRef = storage.getReference();
 
         String key = database.getReference("BucketItem").push().getKey();
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openImage();
+            }
+        });
+
 
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,6 +176,22 @@ public class Add_Bucket extends BaseActivity {
             }
         });
     }
+    private void openImage(){
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent,IMAGE_REQUEST);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            String imageUri = data.getData().toString();
+            imageView.setImageURI(Uri.parse(imageUri));
+
+        }
+    }
 
 }

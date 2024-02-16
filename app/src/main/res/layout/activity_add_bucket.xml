@@ -103,8 +103,8 @@
 
     <TextView
         android:id="@+id/select_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="26dp"
         android:text="MM/DD/YYYY"
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp"
