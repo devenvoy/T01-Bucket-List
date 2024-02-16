@@ -18,13 +18,16 @@
             android:name=".Add_Bucket"
             android:exported="false" />
         <activity
+            android:name=".Registration"
+            android:exported="false" />
+        <activity
             android:name=".home_activity"
             android:exported="false" />
         <activity
             android:name=".BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".Registration"
+            android:name=".onBoarding_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img3"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".onboard2">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_350sdp"
+        android:src="@drawable/gradient"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_140sdp"
+        android:text="@string/manage_your_expenses_on_the_go"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_70sdp"
+        android:layout_marginBottom="@dimen/_70sdp"
+        android:includeFontPadding="false"
+        android:text="@string/split_the_expense_between_your_group_and_keep_track_of_your_to_do_list_and_things_you_want_to_do_at_the_destination"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

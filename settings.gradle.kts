@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 pluginManagement {
     repositories {
         google()
@@ -9,6 +12,8 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        jcenter()
+        maven { url=uri("https://jitpack.io") }
         mavenCentral()
     }
 }

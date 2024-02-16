@@ -21,7 +21,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="12dp"
-        android:contentDescription="@string/create_bucket"
         android:src="@drawable/ic_add" />
 
 
