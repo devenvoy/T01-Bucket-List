@@ -30,16 +30,11 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import org.jetbrains.annotations.Nullable;
 
-public class Registration extends AppCompatActivity {
+public class Registration extends BaseActivity {
 
-    private static final String TAG = "MainActivity";
     private SignInButton signInButton;
 
     GoogleSignInClient googleSignInClient;
-    private static final int RC_SIGN_IN = 1;
-    String name, email;
-    String idToken;
-    private FirebaseAuth.AuthStateListener authStateListener;
 
     private FirebaseAuth mAuth;
 
@@ -71,16 +66,19 @@ public class Registration extends AppCompatActivity {
         });
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // Check condition
         if (requestCode == 100) {
             // When request code is equal to 100 initialize task
+            showProgress();
             Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             // check condition
             if (signInAccountTask.isSuccessful()) {
                 // When google sign in successful initialize string
+                hideProgress();
                 String s = "Google sign in successful";
                 // Display Toast
                 displayToast(s);
@@ -112,11 +110,9 @@ public class Registration extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+            hideProgress();
         }
     }
 
-    private void displayToast(String s) {
-        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-    }
 
 }
