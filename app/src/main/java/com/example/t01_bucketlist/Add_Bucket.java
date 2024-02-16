@@ -85,7 +85,7 @@ public class Add_Bucket extends BaseActivity {
                 showProgress();
                 int num1 = new Random().nextInt();
                 int num2 = new Random().nextInt();
-                String imgName = "" + num1 + num2 + ".jpg";
+                String imgName = Math.abs(num1) + Math.abs(num2) + ".jpg";
                 StorageReference mountainsRef = storageRef.child(imgName);
                 StorageReference imgRef = storageRef.child("images/" + imgName);
 
@@ -96,44 +96,53 @@ public class Add_Bucket extends BaseActivity {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 byte[] data = baos.toByteArray();
 
-                UploadTask uploadTask = mountainsRef.putBytes(data);
+                UploadTask uploadTask = imgRef.putBytes(data);
                 uploadTask.addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
+                        Log.e("====", "123");
                         // Handle unsuccessful uploads
+                        hideProgress(); // Move hideProgress inside onFailure
                     }
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
+                        Log.e("====", taskSnapshot.toString());
+                        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Log.e("====", uri.toString());
+                                String imgPath = uri.toString();
+                                String name = edName.getText().toString();
+                                String desc = edDesc.getText().toString();
+                                String amt = edAmt.getText().toString();
+                                String date = selectedDateTV.getText().toString();
+
+                                BucketItem bti = new BucketItem(
+                                        key,
+                                        imgPath,
+                                        name,
+                                        desc,
+                                        amt,
+                                        date,
+                                        "");
+
+                                writeNewBucket(bti);
+                                hideProgress(); // Move hideProgress inside onSuccess
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                Log.e("====", exception.toString());
+                                // Handle any errors
+                                hideProgress(); // Move hideProgress inside onFailure
+                            }
+                        });
                     }
                 });
-                imgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        String imgPath = task.toString();
-                        String name = edName.getText().toString();
-                        String desc = edDesc.getText().toString();
-                        String amt = edAmt.getText().toString();
-                        String date = selectedDateTV.getText().toString();
-
-                        BucketItem bti = new BucketItem(
-                                key,
-                                imgPath,
-                                name,
-                                desc,
-                                amt,
-                                date,
-                                "");
-
-                        writeNewBucket(bti);
-
-                    }
-                });
-                hideProgress();
             }
         });
-
 
 
         selectedDateTV.setOnClickListener(new View.OnClickListener() {
@@ -173,14 +182,16 @@ public class Add_Bucket extends BaseActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 displayToast("Bucket Added");
+                finish();
             }
         });
     }
-    private void openImage(){
+
+    private void openImage() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        startActivityForResult(intent,IMAGE_REQUEST);
+        startActivityForResult(intent, IMAGE_REQUEST);
     }
 
     @Override
