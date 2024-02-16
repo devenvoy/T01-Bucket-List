@@ -1,5 +1,6 @@
 package com.example.t01_bucketlist;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -29,6 +30,7 @@ public class setting extends Fragment {
 
     public void logout(View view) {
         mAuth.signOut();
+//        startActivity(new Intent(getContext(), onBoarding_screen.class));
         getActivity().finish();
     }
 }
