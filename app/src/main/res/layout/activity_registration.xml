@@ -77,7 +77,7 @@
                 android:layout_height="@dimen/_20sdp"
                  android:src="@drawable/google"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/txt"/>
 
@@ -90,7 +90,7 @@
                 android:textColor="#fff"
                 android:textSize="@dimen/_14ssp"
                 android:layout_marginEnd="@dimen/_50sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
