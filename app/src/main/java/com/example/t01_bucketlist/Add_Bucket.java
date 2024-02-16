@@ -1,30 +1,130 @@
 package com.example.t01_bucketlist;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.t01_bucketlist.model.BucketItem;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
+import java.util.Random;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class Add_Bucket extends AppCompatActivity {
-    private static final int IMAGE_REQUEST = 1;
+public class Add_Bucket extends BaseActivity {
     private TextView selectedDateTV;
-    CircleImageView circleImageView;
+
+    ImageView imageView;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    FirebaseStorage storage;
+    StorageReference storageRef;
+    Button submitbtn;
+    EditText edName, edDesc, edAmt;
+    Spinner category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bucket);
 
+        submitbtn = findViewById(R.id.submit_btn);
         selectedDateTV = findViewById(R.id.select_time);
-        circleImageView = findViewById(R.id.add_image);
+        imageView = findViewById(R.id.img_back);
+        edName = findViewById(R.id.ed_bucketname);
+        edDesc = findViewById(R.id.ed_bucketdescription);
+        edAmt = findViewById(R.id.ed_amount);
+
+
+        database = FirebaseDatabase.getInstance();
+        storage = FirebaseStorage.getInstance();
+        myRef = database.getReference("BucketItem").push();
+        storageRef = storage.getReference();
+
+        String key = database.getReference("BucketItem").push().getKey();
+
+        submitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showProgress();
+                int num1 = new Random().nextInt();
+                int num2 = new Random().nextInt();
+                String imgName = "" + num1 + num2 + ".jpg";
+                StorageReference mountainsRef = storageRef.child(imgName);
+                StorageReference imgRef = storageRef.child("images/" + imgName);
+
+                imageView.setDrawingCacheEnabled(true);
+                imageView.buildDrawingCache();
+                Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
+
+                UploadTask uploadTask = mountainsRef.putBytes(data);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    }
+                });
+                imgRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        String imgPath = task.toString();
+                        String name = edName.getText().toString();
+                        String desc = edDesc.getText().toString();
+                        String amt = edAmt.getText().toString();
+                        String date = selectedDateTV.getText().toString();
+
+                        BucketItem bti = new BucketItem(
+                                key,
+                                imgPath,
+                                name,
+                                desc,
+                                amt,
+                                date,
+                                "");
+
+                        writeNewBucket(bti);
+
+                    }
+                });
+                hideProgress();
+            }
+        });
+
+
+
         selectedDateTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,19 +155,16 @@ public class Add_Bucket extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+    }
 
-        circleImageView.setOnClickListener(new View.OnClickListener() {
+    void writeNewBucket(BucketItem bt) {
+        myRef.setValue(bt).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onClick(View view) {
-                openImage();
+            public void onComplete(@NonNull Task<Void> task) {
+                displayToast("Bucket Added");
             }
         });
     }
 
-    private void openImage(){
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent,IMAGE_REQUEST);
-    }
+
 }
