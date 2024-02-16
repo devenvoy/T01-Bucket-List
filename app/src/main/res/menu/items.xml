@@ -6,8 +6,16 @@
         android:title="Home"
         android:icon="@drawable/ic_launcher_foreground"
         app:cnb_backgroundColor="#AAAAAA"
-        app:cnb_iconColor="#000"
+        app:cnb_iconColor="#fff"
         app:cnb_iconTintMode="src_in"
-        app:cnb_textColor="#000"/>
+        app:cnb_textColor="#fff"/>
 
+    <item
+        android:id="@+id/item2"
+        android:title="Setting"
+        android:icon="@drawable/ic_launcher_foreground"
+        app:cnb_backgroundColor="#AAAAAA"
+        app:cnb_iconColor="#fff"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#fff"/>
 </menu>
