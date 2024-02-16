@@ -56,13 +56,10 @@ public class Registration extends BaseActivity {
 
 
         signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = googleSignInClient.getSignInIntent();
-                // Start activity for result
-                startActivityForResult(intent, 100);
-            }
+        signInButton.setOnClickListener(view -> {
+            Intent intent = googleSignInClient.getSignInIntent();
+            // Start activity for result
+            startActivityForResult(intent, 100);
         });
 
     }
@@ -73,12 +70,12 @@ public class Registration extends BaseActivity {
         // Check condition
         if (requestCode == 100) {
             // When request code is equal to 100 initialize task
-            showProgress();
+
             Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             // check condition
             if (signInAccountTask.isSuccessful()) {
+                showProgress();
                 // When google sign in successful initialize string
-                hideProgress();
                 String s = "Google sign in successful";
                 // Display Toast
                 displayToast(s);
