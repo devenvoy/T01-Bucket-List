@@ -30,16 +30,11 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import org.jetbrains.annotations.Nullable;
 
-public class Registration extends AppCompatActivity {
+public class Registration extends BaseActivity {
 
-    private static final String TAG = "MainActivity";
     private SignInButton signInButton;
 
     GoogleSignInClient googleSignInClient;
-    private static final int RC_SIGN_IN = 1;
-    String name, email;
-    String idToken;
-    private FirebaseAuth.AuthStateListener authStateListener;
 
     private FirebaseAuth mAuth;
 
@@ -61,25 +56,25 @@ public class Registration extends AppCompatActivity {
 
 
         signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = googleSignInClient.getSignInIntent();
-                // Start activity for result
-                startActivityForResult(intent, 100);
-            }
+        signInButton.setOnClickListener(view -> {
+            Intent intent = googleSignInClient.getSignInIntent();
+            // Start activity for result
+            startActivityForResult(intent, 100);
         });
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // Check condition
         if (requestCode == 100) {
             // When request code is equal to 100 initialize task
+
             Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             // check condition
             if (signInAccountTask.isSuccessful()) {
+                showProgress();
                 // When google sign in successful initialize string
                 String s = "Google sign in successful";
                 // Display Toast
@@ -112,11 +107,9 @@ public class Registration extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+            hideProgress();
         }
     }
 
-    private void displayToast(String s) {
-        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-    }
 
 }
