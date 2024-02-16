@@ -16,58 +16,81 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"/>
 
-
-    <EditText
-        android:id="@+id/ed_bucketdescription"
+    <LinearLayout
+        android:id="@+id/itm1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Description"
-        android:maxLines="1"
-        android:maxLength="16"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473" />
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@id/img_back"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:background="@drawable/back"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp">
+        <EditText
+            android:id="@+id/ed_bucketname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:maxLines="1"
+            android:maxLength="16"
+            android:padding="@dimen/_10sdp"
+            android:background="@null"
+            android:textColor="@color/black"
+            android:textColorHint="#CC000000"
+            android:textSize="@dimen/_15sdp" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/ed_amount"
+    <LinearLayout
+        android:id="@+id/itm2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Amount"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="@dimen/_15sdp"
-        android:maxLines="1"
-        android:maxLength="16"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561"/>
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@id/itm1"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/back"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp">
+        <EditText
+            android:id="@+id/ed_bucketdescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:maxLines="1"
+            android:maxLength="16"
+            android:background="@null"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/_15sdp"/>
 
-    <EditText
-        android:id="@+id/ed_bucketname"
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/itm3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        android:maxLines="1"
-        android:maxLength="16"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@id/itm2"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/back"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp">
+
+        <EditText
+            android:id="@+id/ed_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount"
+            android:background="@null"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/_15sdp"
+            android:maxLines="1"
+            android:padding="@dimen/_10sdp"
+            android:maxLength="16"
+            android:inputType="numberDecimal"/>
+
+    </LinearLayout>
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,6 +98,7 @@
         android:text="Category"
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
@@ -83,17 +107,16 @@
         app:layout_constraintVertical_bias="0.825" />
 
     <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date"
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.665" />
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/itm3"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/add_image"
@@ -115,17 +138,16 @@
         android:text="MM/DD/YYYY"
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.364"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.665" />
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/itm3"
+        app:layout_constraintStart_toEndOf="@id/date"/>
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spin_category"
         android:layout_width="@dimen/_170sdp"
         android:layout_height="@dimen/_50sdp"
+        android:spinnerMode="dialog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.894"
@@ -133,15 +155,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.851" />
 
-    <Button
-        android:id="@+id/submit_btn"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Update"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/submit_btn"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_50sdp"
+      app:cornerRadius="@dimen/_10sdp"
+      app:strokeWidth="@dimen/_3sdp"
+      app:strokeColor="@color/black"
+      android:text="Update"
+      android:textColor="@color/black"
+      android:textSize="@dimen/_16ssp"
+      android:backgroundTint="#00000000"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginBottom="@dimen/_30sdp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
