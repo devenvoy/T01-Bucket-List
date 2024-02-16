@@ -44,6 +44,21 @@
         app:layout_constraintVertical_bias="0.473" />
 
     <EditText
+        android:id="@+id/ed_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amount"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.561"/>
+
+    <EditText
         android:id="@+id/ed_bucketname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,6 +73,46 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.377" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.665" />
+
+    <TextView
+        android:id="@+id/select_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MM/DD/YYYY"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.665" />
+
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spin_category"
         android:layout_width="@dimen/_170sdp"
@@ -67,17 +122,17 @@
         app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.579" />
+        app:layout_constraintVertical_bias="0.851" />
 
     <Button
         android:id="@+id/submit_btn"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text="submit"
+        android:text="Update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintVertical_bias="0.976" />
 </androidx.constraintlayout.widget.ConstraintLayout>
