@@ -24,6 +24,9 @@ public class home_activity extends AppCompatActivity {
                 if (i == R.id.item1) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, new home_frag()).commit();
                 }
+                else if (i == R.id.item2) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, new setting()).commit();
+                }
             }
         });
 

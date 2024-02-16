@@ -4,7 +4,7 @@
     <item
         android:id="@+id/item1"
         android:title="Home"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/home"
         app:cnb_backgroundColor="#AAAAAA"
         app:cnb_iconColor="#fff"
         app:cnb_iconTintMode="src_in"
@@ -13,7 +13,7 @@
     <item
         android:id="@+id/item2"
         android:title="Setting"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/settings"
         app:cnb_backgroundColor="#AAAAAA"
         app:cnb_iconColor="#fff"
         app:cnb_iconTintMode="src_in"
