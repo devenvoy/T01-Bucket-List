@@ -23,6 +23,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class Registration extends BaseActivity {
 
-    private SignInButton signInButton;
+    private MaterialCardView signInButton;
 
     GoogleSignInClient googleSignInClient;
 
