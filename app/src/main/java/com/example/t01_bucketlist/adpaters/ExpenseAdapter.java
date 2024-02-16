@@ -3,6 +3,8 @@ package com.example.t01_bucketlist.adpaters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +24,7 @@ public class ExpenseAdapter extends FirebaseRecyclerAdapter<ExpenseItem, Expense
     protected void
     onBindViewHolder(@NonNull ExpenseViewHolder holder,
                      int position, @NonNull ExpenseItem model) {
+
     }
 
     @NonNull
@@ -34,8 +37,15 @@ public class ExpenseAdapter extends FirebaseRecyclerAdapter<ExpenseItem, Expense
     }
 
     public class ExpenseViewHolder extends RecyclerView.ViewHolder {
+        ImageView cardImg;
+        TextView tName, tDate, tcat;
+
         public ExpenseViewHolder(@NonNull View itemView) {
             super(itemView);
+            cardImg = itemView.findViewById(R.id.card_image);
+            tName = itemView.findViewById(R.id.card_name);
+            tcat = itemView.findViewById(R.id.card_cate);
+            tDate = itemView.findViewById(R.id.card_date);
         }
     }
 
