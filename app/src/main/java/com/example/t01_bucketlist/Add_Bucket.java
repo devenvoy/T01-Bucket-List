@@ -3,6 +3,7 @@ package com.example.t01_bucketlist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,14 +12,19 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Add_Bucket extends AppCompatActivity {
+    private static final int IMAGE_REQUEST = 1;
     private TextView selectedDateTV;
+    CircleImageView circleImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bucket);
 
         selectedDateTV = findViewById(R.id.select_time);
+        circleImageView = findViewById(R.id.add_image);
         selectedDateTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,5 +55,19 @@ public class Add_Bucket extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openImage();
+            }
+        });
+    }
+
+    private void openImage(){
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent,IMAGE_REQUEST);
     }
 }

@@ -10,7 +10,7 @@
         android:id="@+id/img_back"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/img1"
+        android:background="@drawable/img2"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"/>
@@ -78,7 +78,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time"
+        android:text="Date"
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,11 +89,11 @@
         app:layout_constraintVertical_bias="0.665" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/add_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/imagescamera"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
