@@ -66,6 +66,5 @@ dependencies {
     // Circle Image
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
-
-            implementation("com.google.firebase:firebase-storage")
+    implementation("com.google.firebase:firebase-storage")
 }
