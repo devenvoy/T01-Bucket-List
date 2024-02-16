@@ -34,7 +34,12 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="Welcome Home..!"
+            android:textSize="@dimen/_20sdp"
+            android:layout_gravity="center_vertical"
+            android:textColor="#000"/>
     </LinearLayout>
 
 
@@ -58,8 +63,9 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="12dp"
         android:src="@drawable/ic_add"
+        android:backgroundTint="@color/black"
         android:layout_marginBottom="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
