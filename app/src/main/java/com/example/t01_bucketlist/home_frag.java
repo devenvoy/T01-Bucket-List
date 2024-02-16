@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.t01_bucketlist.adpaters.ExpenseAdapter;
+import com.example.t01_bucketlist.model.BucketItem;
 import com.example.t01_bucketlist.model.ExpenseItem;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -45,8 +46,8 @@ public class home_frag extends Fragment {
                 .child("Expense")
                 .limitToLast(50);
 
-        FirebaseRecyclerOptions<ExpenseItem> options = new FirebaseRecyclerOptions.Builder<ExpenseItem>()
-                .setQuery(query, ExpenseItem.class)
+        FirebaseRecyclerOptions<BucketItem> options = new FirebaseRecyclerOptions.Builder<BucketItem>()
+                .setQuery(query, BucketItem.class)
                 .build();
 
         adapter = new ExpenseAdapter(options);
@@ -63,7 +64,7 @@ public class home_frag extends Fragment {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent());
+                startActivity(new Intent(getContext(), Add_Bucket.class));
             }
         });
     }
