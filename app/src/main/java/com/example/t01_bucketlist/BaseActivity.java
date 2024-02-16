@@ -20,7 +20,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void hideProgress(){
-        dialog.dismiss();
+       if(dialog!=null){
+           dialog.dismiss();
+       }
     }
 
     public void displayToast(String s) {
