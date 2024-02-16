@@ -1,6 +1,7 @@
 package com.example.t01_bucketlist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -11,6 +12,9 @@ public class home_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
         getSupportFragmentManager().beginTransaction().replace(R.id.frame,new home_frag()).commit();
+
+
     }
 }

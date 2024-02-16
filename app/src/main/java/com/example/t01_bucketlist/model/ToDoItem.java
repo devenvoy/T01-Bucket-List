@@ -19,7 +19,7 @@ public class ToDoItem {
         category = "";
     }
 
-    public ToDoItem(String id, String title, String place, String description, String CDate, String tdate, String category) {
+    public ToDoItem(String id, String title, String place, String description, String CDate, String tdate, String wcategory) {
         Id = id;
         Title = title;
         Place = place;
