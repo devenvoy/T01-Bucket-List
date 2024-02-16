@@ -10,8 +10,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -25,7 +26,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,22 +49,31 @@ public class Add_Bucket extends BaseActivity {
     DatabaseReference myRef;
     FirebaseStorage storage;
     StorageReference storageRef;
-    MaterialButton submitbtn;
+    Button submitbtn;
     EditText edName, edDesc, edAmt;
     Spinner category;
+
+
+    String[] categoryList = {"Travel", "Food", "Work", "Learning", "Health", "Love"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bucket);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         submitbtn = findViewById(R.id.submit_btn);
         selectedDateTV = findViewById(R.id.select_time);
         imageView = findViewById(R.id.img_back);
         edName = findViewById(R.id.ed_bucketname);
         edDesc = findViewById(R.id.ed_bucketdescription);
         edAmt = findViewById(R.id.ed_amount);
+        category = findViewById(R.id.spin_category);
+        category = findViewById(R.id.spin_category);
 
+        ArrayAdapter spinAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, categoryList);
+        category.setPrompt("Select Quantity..");
+        category.setGravity(Gravity.CENTER);
+        category.setAdapter(spinAdapter);
 
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
@@ -120,6 +129,7 @@ public class Add_Bucket extends BaseActivity {
                                 String desc = edDesc.getText().toString();
                                 String amt = edAmt.getText().toString();
                                 String date = selectedDateTV.getText().toString();
+                                String cat = category.getSelectedItem().toString();
 
                                 BucketItem bti = new BucketItem(
                                         key,
@@ -128,7 +138,7 @@ public class Add_Bucket extends BaseActivity {
                                         desc,
                                         amt,
                                         date,
-                                        "");
+                                        cat);
 
                                 writeNewBucket(bti);
                                 hideProgress(); // Move hideProgress inside onSuccess

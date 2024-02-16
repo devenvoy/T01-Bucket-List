@@ -63,7 +63,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="12dp"
         android:src="@drawable/ic_add"
-        android:backgroundTint="@color/black"
+        android:tint="@color/white"
         android:layout_marginBottom="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_30sdp"
         app:layout_constraintBottom_toBottomOf="parent"

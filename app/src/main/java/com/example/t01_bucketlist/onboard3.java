@@ -24,6 +24,7 @@ public class onboard3 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), Registration.class);
+                getActivity().finish();
                 startActivity(intent);
             }
         });

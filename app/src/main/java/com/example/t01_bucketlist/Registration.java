@@ -97,6 +97,7 @@ public class Registration extends BaseActivity {
                                 if (task.isSuccessful()) {
                                     // When task is successful redirect to profile activity display Toast
                                     startActivity(new Intent(Registration.this, home_activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                                    finish();
                                     displayToast("Firebase authentication successful");
                                 } else {
                                     // When task is unsuccessful display Toast
