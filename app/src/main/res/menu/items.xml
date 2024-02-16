@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/item1"
         android:title="Home"
-        android:icon="@drawable/ic_launcher_foreground"/>
+        android:icon="@drawable/ic_launcher_foreground"
+        app:cnb_backgroundColor="#AAAAAA"
+        app:cnb_iconColor="#000"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#000"/>
 
 </menu>

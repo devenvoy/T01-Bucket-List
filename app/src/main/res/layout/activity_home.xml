@@ -13,15 +13,13 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomnav"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomnav"
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        app:menu="@menu/items"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/bottomnav"
+        app:cnb_menuResource="@menu/items"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 

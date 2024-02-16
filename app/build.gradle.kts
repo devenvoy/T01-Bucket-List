@@ -54,6 +54,9 @@ dependencies {
     //design dependencies..!
     implementation("com.intuit.sdp:sdp-android:1.1.0")
     implementation("com.intuit.ssp:ssp-android:1.1.0")
+    implementation("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
+    implementation("com.romandanylyk:pageindicatorview:1.0.3")
 
     // database
     implementation("com.google.firebase:firebase-database")
