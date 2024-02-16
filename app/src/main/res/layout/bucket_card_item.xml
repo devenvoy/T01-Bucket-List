@@ -15,7 +15,8 @@
             android:id="@+id/card_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_margin="12dp" />
+            android:layout_margin="12dp"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/card_name"

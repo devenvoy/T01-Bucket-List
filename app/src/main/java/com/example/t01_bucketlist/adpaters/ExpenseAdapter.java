@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,8 +18,12 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class ExpenseAdapter extends FirebaseRecyclerAdapter<BucketItem, ExpenseAdapter.ExpenseViewHolder> {
 
-    public ExpenseAdapter(@NonNull FirebaseRecyclerOptions<BucketItem> options) {
+
+    private final FragmentActivity activity;
+
+    public ExpenseAdapter(@NonNull FirebaseRecyclerOptions<BucketItem> options, FragmentActivity activity) {
         super(options);
+        this.activity = activity;
     }
 
     @Override
@@ -26,6 +31,7 @@ public class ExpenseAdapter extends FirebaseRecyclerAdapter<BucketItem, ExpenseA
     onBindViewHolder(@NonNull ExpenseViewHolder holder,
                      int position, @NonNull BucketItem model) {
 
+        Glide.with(activity).load(model.getImgPath()).into(holder.cardImg);
         holder.tName.setText(model.getName());
         holder.tDate.setText(model.getDate());
         holder.tcat.setText(model.getCategory());
@@ -40,6 +46,7 @@ public class ExpenseAdapter extends FirebaseRecyclerAdapter<BucketItem, ExpenseA
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bucket_card_item, parent, false);
         return new ExpenseAdapter.ExpenseViewHolder(view);
     }
+
 
     public class ExpenseViewHolder extends RecyclerView.ViewHolder {
         ImageView cardImg;

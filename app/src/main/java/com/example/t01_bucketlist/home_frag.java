@@ -43,14 +43,15 @@ public class home_frag extends Fragment {
 
         Query query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("Expense")
+                .child("BucketItem")
                 .limitToLast(50);
 
         FirebaseRecyclerOptions<BucketItem> options = new FirebaseRecyclerOptions.Builder<BucketItem>()
                 .setQuery(query, BucketItem.class)
                 .build();
 
-        adapter = new ExpenseAdapter(options);
+
+        adapter = new ExpenseAdapter(options,getActivity());
 
         recyclerView.setAdapter(adapter);
 
